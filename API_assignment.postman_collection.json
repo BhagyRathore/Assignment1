@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "6cde8df2-e290-495f-b281-050696e6b24d",
+		"name": "API_assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "spacex",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e281687-55fd-4120-bde6-46d87d93d6f5",
+						"exec": [
+							"\r",
+							"pm.test(\"Response is 200 OK\", function(){pm.response.to.have.status(200)});\r",
+							"pm.test(\"Check Flight Number\",function(){var jsonData=pm.response.json();\r",
+							"pm.expect(jsonData).to.have.property('flight_number')\r",
+							"});\r",
+							"pm.test(\"test2\", function(){var jsonData=pm.response.json();\r",
+							"pm.expect(jsonData.flight_number).to.eql(100);})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spacexdata.com/v4/launches/latest",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spacexdata",
+						"com"
+					],
+					"path": [
+						"v4",
+						"launches",
+						"latest"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
